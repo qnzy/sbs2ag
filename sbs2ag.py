@@ -9,9 +9,9 @@ videoName = sys.argv[1]
 videoIn = cv2.VideoCapture(videoName)
 fourcc   = cv2.VideoWriter_fourcc(*'MJPG')
 
-fps    = round(videoIn.get(cv2.CAP_PROP_FPS))
-width  = round(videoIn.get(cv2.CAP_PROP_FRAME_WIDTH))
-height = round(videoIn.get(cv2.CAP_PROP_FRAME_HEIGHT))
+fps    = int(videoIn.get(cv2.CAP_PROP_FPS))
+width  = int(videoIn.get(cv2.CAP_PROP_FRAME_WIDTH))
+height = int(videoIn.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
 #print(f'{width}x{height} {fps}fps')
 
