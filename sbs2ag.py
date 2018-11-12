@@ -12,8 +12,12 @@ fps        = int(videoIn.get(cv2.CAP_PROP_FPS))
 width      = int(videoIn.get(cv2.CAP_PROP_FRAME_WIDTH))
 height     = int(videoIn.get(cv2.CAP_PROP_FRAME_HEIGHT))
 frameCount = int(videoIn.get(cv2.CAP_PROP_FRAME_COUNT))
+#print(f'{videoIn} {fps} {width} {height} {frameCount}')
 fourcc     = cv2.VideoWriter_fourcc(*'MJPG')
 #fourcc     = int(videoIn.get(cv2.CAP_PROP_FOURCC))
+if width == 0 or height == 0:
+    print('error opening file')
+    sys.exit()
 videoOut   = cv2.VideoWriter('output.avi', fourcc, fps, (width//2, height))
 
 anagl = np.zeros((height, width//2, 3)).astype(np.uint8)
@@ -28,7 +32,7 @@ while (videoIn.isOpened()):
     h,w,c = frame.shape
     if w != width or h != height or c != 3:
         print('frame dimension error')
-        break
+        sys.exit()
     currentFrame += 1
     if currentFrame - frameProgress >= frameCount/10:
         print('.', end='')
