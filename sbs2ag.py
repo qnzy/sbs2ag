@@ -5,6 +5,7 @@ import cv2
 
 if len(sys.argv) != 2:
     print('give input video as command line argument')
+    sys.exit()
 
 videoName  = sys.argv[1]
 videoIn    = cv2.VideoCapture(videoName)
