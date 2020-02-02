@@ -1,7 +1,6 @@
 # sbs2ag: convert side-by-side video to an anaglyph video
 #         (red-cyan 3d)
 #
-# yek, 2018
 # public domain / CC0
 #
 
