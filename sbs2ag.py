@@ -9,6 +9,11 @@ import sys
 import numpy as np
 import cv2
 
+# default pixel channel mapping for cv2
+RED   = 2
+GREEN = 1
+BLUE  = 0
+
 if len(sys.argv) != 2:
     print('give input video as command line argument')
     sys.exit()
@@ -47,10 +52,10 @@ while (videoIn.isOpened()):
         frameProgress = currentFrame
     left = frame[:,:w//2,:]
     right = frame[:,w//2:,:]
-    # 0: b, 1: g, 2: r
-    anagl[:,:,0] = right[:,:,0]
-    anagl[:,:,1] = right[:,:,1]
-    anagl[:,:,2] = left[:,:,2]
+    # simplest anaglyph algorithm; others exist
+    anagl[:,:,RED]   = left[:,:,RED]
+    anagl[:,:,GREEN] = right[:,:,GREEN]
+    anagl[:,:,BLUE]  = right[:,:,BLUE]
     videoOut.write(anagl)
 print('done')
 
